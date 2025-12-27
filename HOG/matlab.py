@@ -3,39 +3,24 @@ import matplotlib.pyplot as plt
 from skimage.feature import hog
 from skimage import exposure
 
-img=cv2.imread('128x64.jpeg')
-gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+img = cv2.imread('imagem_hog.jpeg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-CS=8
-hog_features, hog_image=hog(
+hog_fv, hog_image = hog(
     gray,
     orientations=9,
-    pixels_per_cell=(CS, CS),
+    pixels_per_cell=(8,8),
     cells_per_block=(2, 2),
-    block_norm='L2-Hys',
     visualize=True,
     feature_vector=True
 )
 
-plt.figure(figsize=(12, 4))
+hog_image_rescaled = exposure.rescale_intensity(
+    hog_image, in_range=(0, 5)
+)
 
-plt.subplot(1, 3, 1)
-plt.imshow(gray, cmap='gray')
-plt.title('Input Image')
+plt.imshow(hog_image_rescaled, cmap='gray')
 plt.axis('off')
+plt.show()
+print(hog_fv)
 
-plt.subplot(1, 3, 2)
-plt.imshow(hog_image, cmap='gray')
-plt.title('HOG Features')
-plt.axis('off')
-
-plt.subplot(1, 3, 3)
-plt.imshow(gray, cmap='gray')
-plt.imshow(hog_image, cmap='hot', alpha=0.5)
-plt.title('Image + HOG')
-plt.axis('off')
-
-plt.tight_layout()
-plt.imshow(gray,cmap='gray')
-
-print(len(hog_features)) 
