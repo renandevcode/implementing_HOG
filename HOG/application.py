@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from skimage.feature import hog
 from skimage import exposure
 
-img = cv2.imread('imagem_hog.jpeg')
+img = cv2.imread('../images/imagem_hog.jpeg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 hog_fv, hog_image = hog(
