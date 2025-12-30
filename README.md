@@ -92,6 +92,9 @@ Os blocos são **sobrepostos**, o que melhora a estabilidade do descritor.
 
 ---
 
+<img width="388" height="472" alt="image" src="https://github.com/user-attachments/assets/ee9d40b8-2d81-4ad7-a086-b08d3af336fd" />
+
+
 ## Vetor final de características
 
 Após processar toda a imagem:
